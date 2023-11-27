@@ -48,11 +48,19 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('login')
 
+
 def agregar_proveedores(request):
-    return render(request,'proveedores_agregar.html')
+    es_admin=request.user.is_staff
+    
+    if es_admin:
+        return render(request, "proveedores_agregar.html", {'user':request.user, 'es_admin':es_admin})
+
 
 def mostrar_proveedores(request):
-    return render(request,'proveedores_mostrar.html')
+    es_admin=request.user.is_staff
+    
+    if es_admin:
+        return render(request,'proveedores_mostrar.html', {'user': request.user, 'es_admin': es_admin})
 
 
 

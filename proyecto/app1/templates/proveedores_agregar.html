@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>esta pagina es para el proveedor agregar</h1>
+    {% if es_admin %}
+        <h1>Bienvenido {{user.username}} al área para agregar proveedores</h1>
+        <h1>esta pagina es para el proveedor agregar</h1>
+    {% else %}
+        <h1>No tienes permisos para acceder a esta pagina</h1>
+    {% endif%}
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+    
 </body>
 </html>
